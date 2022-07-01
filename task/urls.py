@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import TaskView, AddTaskView, UpdateTaskView, category_view
+from .views import TaskView, AddTaskView, UpdateTaskView, category_view, SearchResultsView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,5 +23,6 @@ urlpatterns = [
     path('', AddTaskView.as_view(), name='index'),
     path('tasks', TaskView.as_view(), name='tasks'),
     path('tasks/edit/<int:pk>', UpdateTaskView.as_view(), name='update_task'),
-    path('category/<str:category_name>', category_view, name='category')
+    path('category/<str:category_name>', category_view, name='category'),
+    path("search/", SearchResultsView.as_view(), name="search_results"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

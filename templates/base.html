@@ -59,6 +59,12 @@
                         <a href="/category/8"  {% if request.path == '/category/8' %}class="nav-link active"{% else %}class="nav-link"{% endif %}>Связист<span class="sr-only"></span></a>
                     </li>
                 </ul>
+                <ul class="navbar-nav align-items-end">
+                    <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
+                        <input class="mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </ul>
             </div>
         </nav>
     </aside>
