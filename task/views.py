@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.template.context_processors import request
 from django.views.generic import ListView, CreateView, UpdateView
 from . models import Task
 from .forms import TaskForm, EditTaskForm
@@ -40,9 +39,9 @@ class SearchResultsView(ListView):
     template_name = 'search_results.html'
 
     def get_queryset(self):
-        query = self.request.GET.get("q")
+        query = (self.request.GET.get("q")).replace('-', '.')
         object_list = Task.objects.filter(
-            Q(initiator__icontains=query) | Q(description__icontains=query) | Q(
-                performer__icontains=query) | Q(comment__icontains=query) | Q(date_created__icontains=query)
+            Q(initiator__iregex=query) | Q(description__iregex=query) | Q(
+                performer__iregex=query) | Q(comment__iregex=query) | Q(department__name__iregex=query) | Q(date_created__iregex=query) | Q(date_completed__iregex=query)
         )
         return object_list

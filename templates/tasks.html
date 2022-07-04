@@ -41,7 +41,7 @@
                     <td><small>{{el.performer|default_if_none:''}}</small></td>
                     <td><small>{{el.phone_number}}</small></td>
                     <td><small>{{ el.date_completed|default_if_none:''}}</small></td>
-                    {% if el.comment != '' %}
+                    {% if el.comment|default_if_none:'' != '' %}
                     <td>
                         <small>
                             <a href="#win1" class="text-decoration-none">{{el.comment|slice:"50"}}...</a>
