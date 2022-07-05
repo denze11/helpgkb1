@@ -28,10 +28,12 @@
             </thead>
             <tbody>
                 {% for el in object_list %}
-                {% if el.completed == False %}
-                <tr>
-                {% else %}
+                {% if el.completed == True %}
                 <tr class="table-success">
+                {% elif el.comment|default_if_none:'' != '' %}
+                <tr class="table-danger">
+                {% else %}
+                <tr>
                 {% endif %}
                     <td><small>{{el.id}}</small></td>
                     <td><small>{{el.date_created}}</small></td>
