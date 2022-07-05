@@ -20,6 +20,7 @@ class Category(models.Model):
 class Department(models.Model):
     # Категория
     name = models.CharField('Подразделение', max_length=250)
+    abbreviation = models.CharField('Аббревиатура', max_length=50, default='')
 
     def __str__(self):
         return self.name

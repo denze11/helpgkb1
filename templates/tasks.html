@@ -35,7 +35,7 @@
                 {% endif %}
                     <td><small>{{el.id}}</small></td>
                     <td><small>{{el.date_created}}</small></td>
-                    <td><small>{{ el.department}}</small></td>
+                    <td data-toggle="tooltip" data-placement="top" title="{{ el.department }}"><small>{{ el.department.abbreviation }}</small></td>
                     {% if el.description|default_if_none:''|length > 150 %}
                     <td data-toggle="tooltip" data-placement="top" title="{{ el.description }}"><small class="text-primary">{{ el.description|truncatechars:'150' }}</small></td>
                     {% else %}
