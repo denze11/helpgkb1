@@ -42,11 +42,11 @@
                     <td><small>{{ el.description}}</small></td>
                     {% endif %}
                     <td style = "width: 130px;"><small>{{el.initiator}}</small></td>
-                    <td><small>{{el.performer|default_if_none:''}}</small></td>
-                    <td style = "width: 130px;"><small>{{el.phone_number}}</small></td>
+                    <td style = "width: 130px;"><small>{{el.performer|default_if_none:''}}</small></td>
+                    <td style = "width: 123px;"><small>{{el.phone_number}}</small></td>
                     <td><small>{{ el.date_completed|default_if_none:''}}</small></td>
-                    {% if el.comment|default_if_none:''|length > 10 %}
-                    <td data-toggle="tooltip" data-placement="top" title="{{ el.comment }}"><small class="text-primary">{{ el.comment|truncatechars:'10' }}</small></td>
+                    {% if el.comment|default_if_none:''|length > 15 %}
+                    <td style = "width: 130px;" data-toggle="tooltip" data-placement="top" title="{{ el.comment }}"><small class="text-primary">{{ el.comment|truncatechars:'15' }}</small></td>
                         {% else %}
                         <td><small>{{ el.comment|default_if_none:''}}</small></td>
                         {% endif %}
