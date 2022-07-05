@@ -48,7 +48,7 @@
                     {% if el.comment|default_if_none:''|length > 10 %}
                     <td data-toggle="tooltip" data-placement="top" title="{{ el.comment }}"><small>{{ el.comment|truncatechars:'10' }}</small></td>
                         {% else %}
-                        <td><small>{{ el.comment}}</small></td>
+                        <td><small>{{ el.comment|default_if_none:''}}</small></td>
                         {% endif %}
                     </td>
                     <td>
