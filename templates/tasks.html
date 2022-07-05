@@ -11,7 +11,7 @@
         Список заявок
     </h2>
     <div class="table-responsive pb-5">
-        <table class="table table-bordered table-hover">
+        <table class="table table-sm table-bordered table-hover">
             <thead>
                 <tr class="table-dark">
                     <td scope="col"><small>#</small></td>
@@ -41,9 +41,9 @@
                     {% else %}
                     <td><small>{{ el.description}}</small></td>
                     {% endif %}
-                    <td><small>{{el.initiator}}</small></td>
+                    <td style = "width: 130px;"><small>{{el.initiator}}</small></td>
                     <td><small>{{el.performer|default_if_none:''}}</small></td>
-                    <td><small>{{el.phone_number}}</small></td>
+                    <td style = "width: 130px;"><small>{{el.phone_number}}</small></td>
                     <td><small>{{ el.date_completed|default_if_none:''}}</small></td>
                     {% if el.comment|default_if_none:''|length > 10 %}
                     <td data-toggle="tooltip" data-placement="top" title="{{ el.comment }}"><small>{{ el.comment|truncatechars:'10' }}</small></td>
