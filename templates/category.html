@@ -35,32 +35,28 @@
                 {% endif %}
                     <td><small>{{el.id}}</small></td>
                     <td><small>{{el.date_created}}</small></td>
-                    <td><small>{{ el.department }}</small></td>
-                    <td><small>{{el.description}}</small></td>
+                    <td><small>{{ el.department}}</small></td>
+                    {% if el.description|default_if_none:''|length > 150 %}
+                    <td data-toggle="tooltip" data-placement="top" title="{{ el.description }}"><small>{{ el.description|truncatechars:'150' }}</small></td>
+                    {% else %}
+                    <td><small>{{ el.description}}</small></td>
+                    {% endif %}
                     <td><small>{{el.initiator}}</small></td>
                     <td><small>{{el.performer|default_if_none:''}}</small></td>
                     <td><small>{{el.phone_number}}</small></td>
                     <td><small>{{ el.date_completed|default_if_none:''}}</small></td>
-                    {% if el.comment != '' %}
-                    <td>
-                        <small>
-                            <a href="#win1" class="btn-sm btn-info text-decoration-none">Открыть</a>
-                            <a href="#x" class="overlay" id="win1"></a>
-                            <div class="popup">
-                                <p class="h5">{{el.comment}}</p>
-                                <a class="close"title="Закрыть" href="#close"></a>
-                            </div>
-                        </small>
+                    {% if el.comment|default_if_none:''|length > 10 %}
+                    <td data-toggle="tooltip" data-placement="top" title="{{ el.comment }}"><small>{{ el.comment|truncatechars:'10' }}</small></td>
+                        {% else %}
+                        <td><small>{{ el.comment}}</small></td>
+                        {% endif %}
                     </td>
-                    {% else %}
-                    <td></td>
-                    {% endif %}
                     <td>
                         <small>
                             {% if el.completed == False %}
-                            <a class="btn-sm btn-danger text-decoration-none" href="{% url 'update_task' el.pk %}"><small>Изменить</small></a>
+                            <a class="btn-sm btn-danger text-decoration-none" href="{% url 'update_task' el.pk %}">Изменить</a>
                             {% else %}
-                            <a class="btn-sm btn-success text-decoration-none" href="{% url 'update_task' el.pk %}"><small>Изменить</small></a>
+                            <a class="btn-sm btn-success text-decoration-none" href="{% url 'update_task' el.pk %}">Изменить</a>
                             {% endif %}
                         </small>
                     </td>

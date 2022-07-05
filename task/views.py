@@ -44,4 +44,4 @@ class SearchResultsView(ListView):
             Q(initiator__iregex=query) | Q(description__iregex=query) | Q(
                 performer__iregex=query) | Q(comment__iregex=query) | Q(department__name__iregex=query) | Q(date_created__iregex=query) | Q(date_completed__iregex=query)
         )
-        return object_list
+        return object_list.order_by('-date_created')
