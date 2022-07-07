@@ -10,6 +10,20 @@
     <h2 class="text-center">
         Список заявок
     </h2>
+    <div class="row text-center pb-2">
+        <div class="col-sm text-primary">
+            Всего задач: {{task_all}}
+        </div>
+        <div class="col-sm text-success">
+            Закрыто: {{task_true}}
+        </div>
+        <div class="col-sm">
+            Открыто: {{task_false}} 
+        </div>
+        <div class="col-sm text-danger">
+            Не выполнено: {{task_difficult}}
+        </div>
+    </div>
     <div class="table-responsive pb-5">
         <table class="table table-sm table-bordered table-hover">
             <thead>

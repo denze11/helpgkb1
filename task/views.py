@@ -1,3 +1,4 @@
+from tokenize import Comment
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView
 from . models import Task
@@ -11,6 +12,17 @@ class TaskView(ListView):
 
     # Список начинается с последнего
     ordering = ['-date_created']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        queryset = Task.objects.all()
+        context['task_all'] = queryset.count()
+        context['task_true'] = queryset.filter(completed=True).count()
+        context['task_false'] = queryset.filter(
+            completed=False, comment='').count()
+        context['task_difficult'] = queryset.filter(
+            completed=False).exclude(comment__exact='').count()
+        return context
 
 
 def category_view(request, category_name):
