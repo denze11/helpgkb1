@@ -44,7 +44,8 @@ class Task(models.Model):
     category = models.ForeignKey(
         Category, verbose_name='Категория', on_delete=models.CASCADE, null=True)
     completed = models.BooleanField('Завершить', default=False)
-    comment = models.TextField('Комментарий', blank=True, null=True)
+    comment = models.TextField(
+        'Комментарий', blank=True, null=True, default='')
 
     def __str__(self):
         return str(self.department)
